@@ -41,7 +41,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txfContador = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -138,7 +138,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txfContador, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -150,7 +150,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5))
-                    .addComponent(jTextField2))
+                    .addComponent(txfContador))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
@@ -237,9 +237,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnEJecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEJecutarActionPerformed
-        String entrada=TxfEntrada.getText();
-        System.out.println("texto capturado "+entrada);
+        String entrada = TxfEntrada.getText();
+        System.out.println("texto capturado " + entrada);
+        
+        int contadorTokens = contarTokens(entrada);
+        System.out.println("La entrada tiene " + contadorTokens + " tokens.");
 
+        clasificarTokens(entrada);
     }//GEN-LAST:event_BtnEJecutarActionPerformed
     public static int contarTokens(String entrada) {
         String[] tokens = entrada.split(" ");
@@ -342,6 +346,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txfContador;
     // End of variables declaration//GEN-END:variables
 }
