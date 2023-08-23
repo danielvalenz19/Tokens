@@ -71,11 +71,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Escribe lo que desees!");
 
         BtnLimpiar.setText("Limpiar");
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
 
         BtnEJecutar.setText("ejecutar!");
         BtnEJecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEJecutarActionPerformed(evt);
+            }
+        });
+
+        TxfEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxfEntradaActionPerformed(evt);
             }
         });
 
@@ -97,8 +108,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(22, 22, 22)
-                    .addComponent(TxfEntrada)
-                    .addGap(80, 80, 80)))
+                    .addComponent(TxfEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(90, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +120,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnEJecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(75, 75, 75)
@@ -149,7 +160,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)
-                        .addGap(69, 69, 69)
+                        .addGap(70, 70, 70)
                         .addComponent(txfContador, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -166,11 +177,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 8, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
                     .addComponent(txfContador))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,6 +281,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         int contadorTokens = contarTokens(entrada);
         System.out.println("La entrada tiene " + contadorTokens + " tokens.");
 
+        txfContador.setText(String.valueOf(contadorTokens));
+
         // Clasificar tokens y llenar la tabla
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Digitado");
@@ -285,6 +296,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         tbPrincipal.setModel(model);
     }//GEN-LAST:event_BtnEJecutarActionPerformed
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+
+        limpiar();
+
+
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void TxfEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxfEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxfEntradaActionPerformed
 
     public static int contarTokens(String entrada) {
         String[] tokens = entrada.split(" ");
@@ -330,9 +352,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         return token.matches("-?\\d+(\\.\\d+)?");
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    public void limpiar() {
+        TxfEntrada.setText("");
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
